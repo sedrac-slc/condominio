@@ -1,0 +1,110 @@
+@extends('layouts.template')
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/login-register.css') }}" />
+@endsection
+@section('content')
+    <form method="POST" action="{{ route('register') }}" class="w-75 bg-white">
+        @csrf
+        <a class="back" href="/">
+            <i class="fas fa-arrow-alt-circle-left fa-2x"></i>
+            <span>voltar</span>
+        </a>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="password">
+                    <i class="fas fa-lock"></i>
+                    <span>Senha:</span>
+                </label>
+                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" require placeholder="Digita a sua senha" />
+                @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <label for="password_confirm">
+                    <i class="fas fa-key"></i>
+                    <span>Confirma(senha):</span>
+                </label>
+                <input type="password" name="password_confirm" id="password_confirm" class="form-control" require placeholder="Digita a sua senha" />
+            </div>
+        </div>
+        <hr/>
+        <div class="row mt-1">
+            <div class="col-md-6">
+                <label for="name">
+                    <i class="fas fa-signature"></i>
+                    <span>Nome(completo):</span>
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text" name="name" id="name" class="form-control @error('email') is-invalid @enderror" require placeholder="Digita o seu nome completo" />
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <label for="email">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email:</span>
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" require placeholder="Digita o seu email" />
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-md-6">
+                <label for="genero">
+                    <i class="fas fa-venus-mars"></i>
+                    <span>Género:</span>
+                    <span class="text-danger">*</span>
+                </label>
+                <select class="form-control" name="genero" required>
+                    <option value="">Escolha o seu género</option>
+                    <option value="MASCULINO">Masculino</option>
+                    <option value="FEMENINO">Femenino</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="data_nascimento">
+                    <i class="fas fa-calendar"></i>
+                    <span>Data nascimento:</span>
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="date" class="form-control" name="data_nascimento" id="data_nascimento" placeholder="Digita a sua data:" required />
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-md-6">
+                <label for="phone">
+                    <i class="fas fa-phone"></i>
+                    <span>Telefone:</span>
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="Digita o seu telefone:" />
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button class="btn btn-outline-success" type="submit">
+                <i class="fas fa-file-alt"></i>
+                <span>cadastramento</span>
+            </button>
+        </div>
+        <div class="flex items-center justify-end mt-2 mb-2">
+            <a class="text-primary t-d-n" href="{{ route('login') }}">
+                <i class="fas fa-user"></i>
+                <span class="ml-1">Já tenho uma conta</span>
+            </a>
+        </div>
+
+    </form>
+@endsection

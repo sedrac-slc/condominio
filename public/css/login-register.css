@@ -1,0 +1,25 @@
+
+body, .back{
+    display: flex;
+    align-items: center;
+}
+
+body{
+    justify-content: center;
+}
+
+.back{
+    gap: 0.5rem;
+}
+
+form{
+    margin-top: 4rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+form.register{
+    margin-top: 2.5rem;
+}
