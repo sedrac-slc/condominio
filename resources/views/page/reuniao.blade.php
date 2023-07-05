@@ -38,7 +38,7 @@
             <td>
                 <a class="d-f text-info text-decoration-none" href="{{ route('confirm.users',$reuniao->id) }}">
                     <i class="fas fa-user-check"></i>
-                    <span>lista</span>
+                    <span>listar</span>
                     <sup>
                         <span class="badge bg-primary rounded-circle h5">{{ countUserInReuniao($reuniao) }}</span>
                     </sup>
