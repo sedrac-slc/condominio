@@ -105,7 +105,8 @@ class NotificacaoController extends Controller
             $this->tentaEnviarMensagem($reuniao_id, $user_id);
             $alertMessage = AlertMessage::CREATE();
             toastr()->success($alertMessage->message, $alertMessage->type);
-        } catch (Exception) {
+        } catch (Exception $e) {
+            dd($e);
             $alertMessage = AlertMessage::DANGER();
             toastr()->error($alertMessage->message, $alertMessage->type);
         } finally {
@@ -146,7 +147,7 @@ class NotificacaoController extends Controller
                         'user_id' => $user_id,
                         'reuniao_id' => $reuniao_id
                     ])->first();
-                    
+
                     $notificado->delete();
 
                     $user = User::find($user_id);

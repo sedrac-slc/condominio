@@ -100,7 +100,7 @@ Route::group(["prefix" => "reunioes", 'auth'], function () {
     Route::post('/users/notificar/mult/{id}', [NotificacaoController::class, 'notificar_store_mult'])->name('notificar.users.mult');
 
     Route::get('/search', [ReuniaoController::class, 'search'])->name('reuniao.search');
-    
+
     Route::post('/users/notificar/{reuniao_id}/{user_id}', [NotificacaoController::class, 'users_notificacao_cancel'])->name('notificar.users.cancel');
 });
 
@@ -146,6 +146,7 @@ Route::post('/servico/agendar', [AgendarServicoController::class, 'store_service
 Route::post('/servico/reclamacao', [ReclamacaoServicoController::class, 'store_service'])->name('servico.reclamacao');
 
 Route::group(["prefix" => "pagamento-users"], function () {
+    Route::post('confirmacao/{pagamento_user_id}', [PagamentoUserController::class, 'users_confirm'])->name('pagamento.users.confirm');
     Route::post('/{pagamento_id}/{user_id}', [PagamentoUserController::class, 'users_store'])->name('pagamento.users.store');
     Route::get('/{pagamento_id}', [PagamentoUserController::class, 'search'])->name('pagamento.users.search');
     Route::get('/list/{pagamento_id}', [PagamentoUserController::class, 'list'])->name('pagamento.user.list');

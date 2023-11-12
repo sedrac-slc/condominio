@@ -23,7 +23,8 @@ class ReuniaoController extends Controller
             $reuniao->registerUser(Auth::user()->id);
             $alertMessage = AlertMessage::CREATE();
             toastr()->success($alertMessage->message,$alertMessage->type);
-        }catch(Exception){
+        }catch(Exception $e){
+            dd($e);
             $alertMessage = AlertMessage::DANGER();
             toastr()->error($alertMessage->message,$alertMessage->type);
         }finally{

@@ -8,7 +8,7 @@
         data-data_nascimento="{{ $auth->data_nascimento }}"
     >
     </p>
-    @isset($auth->user_membro)
+    @isset($auth->user_membro->id)
         <p class="d-none" id="membro-funcao" data-funcao="{{ $auth->user_membro->funcao }}" hidden></p>
     @endisset
 @endsection
@@ -102,10 +102,8 @@
     @include('components.modal.delete', [
         'message' => 'Desejas continuar com esta operação eliminando o usuário ',
     ])
-    {{-- @include('components.modal.visualizador.apartamento') --}}
 @endsection
 @section('script')
     @parent
     <script src="{{ asset('js/page/home.js') }}"></script>
-    {{-- <script src="{{ asset('js/visualizador/apartamento.js') }}"></script> --}}
 @endsection

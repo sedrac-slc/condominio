@@ -48,6 +48,8 @@
 @section('modal')
     @include('components.modal.create',[
         'tite' => 'Confirmação',
+        'comprovativo' => true,
+        'model' => true,
         'message' => 'Tens certeza que prentendes efectuar esta acção'
     ])
     @include('components.modal.search',[

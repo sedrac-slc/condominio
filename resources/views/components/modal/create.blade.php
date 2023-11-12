@@ -1,6 +1,6 @@
 <div class="modal fade m-2" id="modalCreate" tabindex="-1" aria-labelledby="modalCreateTitle" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <form id="form-create" class="modal-content bg-white" action="" method="POST">
+    <div class="modal-dialog @isset($model) @else  modal-sm @endisset">
+      <form id="form-create" class="modal-content bg-white" action="" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="modal-header">
           <h5 class="modal-title" id="modalCreateTitle">{{$tite}}</h5>
@@ -10,6 +10,12 @@
                 <p>{{$message}}</p>
                 <p id="user-name"></p>
             </section>
+            @isset($comprovativo)
+                <div>
+                    <label class="form-label">Insira o comprovativo</label>
+                    <input class="form-control" name="file" type="file"/>
+                </div>
+            @endisset
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger rounded" data-bs-dismiss="modal">cancelar</button>

@@ -45,22 +45,6 @@
             <td>{{ $user->telefone }}</td>
             <td>{{ $user->data_nascimento }}</td>
             <td>{{ rulesOfString($user->id) }}</td>
-            <td class="tb-view-action d-none">
-                <button type="button" class="bg-none text-secondary rounded text-center" data-bs-container="body"
-                    data-bs-toggle="popover" data-bs-placement="bottom"
-                    data-bs-content="{{ howCreated($user->how_created)->name }} em {{ $user->created_at }}">
-                    <i class="fas fa-info-circle"></i>
-                    <span>ver</span>
-                </button>
-            </td>
-            <td class="tb-view-action d-none">
-                <button type="button" class="bg-none text-secondary rounded text-center" data-bs-container="body"
-                    data-bs-toggle="popover" data-bs-placement="bottom"
-                    data-bs-content="{{ howUpdated($user->how_updated)->name }} em {{ $user->updated_at }}">
-                    <i class="fas fa-info-circle"></i>
-                    <span>ver</span>
-                </button>
-            </td>
             <td>
                 <a class="d-f text-success text-decoration-none link-add" href="#" data-bs-toggle="modal" data-bs-target="#modalReclamacao"
                 url="{{ route('reclamacao.create', $user->user_membro_id) }}" user="{{ $user->user_membro_id }}">

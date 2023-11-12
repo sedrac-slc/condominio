@@ -7,18 +7,22 @@ use App\Models\Reclamacao;
 use App\Models\ReclamacaoServico;
 use App\Models\User;
 use App\Models\UserMorador;
+use App\Models\UserMembro;
+use App\Models\PagamentoUser;
 
 if (!function_exists('howCreated')) {
-    function howCreated($id): User
+    function howCreated($id)
     {
-        return  User::find($id);
+        $user = User::find($id);
+        return isset($user->id) ? $user : "" ;
     }
 }
 
 if (!function_exists('howUpdated')) {
-    function howUpdated($id):  User
+    function howUpdated($id)
     {
-        return  User::find($id);
+        $user = User::find($id);
+        return isset($user->id) ? $user : "" ;
     }
 }
 
@@ -27,6 +31,25 @@ if (!function_exists('apartamentoUser')) {
     {
         $morador = UserMorador::where('user_id',$user_id)->first();
         return  ApartamentoUser::where('user_morador_id',$morador->id)->first();
+    }
+}
+
+if (!function_exists('userMembro')) {
+    function userMembro($user_id)
+    {
+        $membro = UserMembro::find($user_id);
+        return User::find($membro->user_id);
+    }
+}
+
+if (!function_exists('userMoradorPagementoUser')) {
+    function userMoradorPagementoUser($user_id, $pagamento_id)
+    {
+        $membro = PagamentoUser::where([
+            'user_morador_id' => $user_id,
+            'pagamento_id' => $pagamento_id
+        ])->first();
+        return isset($membro->id);
     }
 }
 

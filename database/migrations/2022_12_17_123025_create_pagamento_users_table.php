@@ -19,6 +19,8 @@ class CreatePagamentoUsersTable extends Migration
             $table->bigInteger('pagamento_id')->unsigned();
             $table->bigInteger('how_created')->default(-1);
             $table->bigInteger('how_updated')->default(-1);
+            $table->bigInteger('checked_id')->nullable();
+            $table->string('file');
             $table->timestamps();
             $table->foreign('user_morador_id')->references('id')->on('user_moradors')->onDelete('cascade');
             $table->foreign('pagamento_id')->references('id')->on('pagamentos')->onDelete('cascade');

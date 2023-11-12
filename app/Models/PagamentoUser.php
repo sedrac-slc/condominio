@@ -15,6 +15,8 @@ class PagamentoUser extends Model
         'pagamento_id',
         'how_created',
         'how_updated',
+        'file',
+        'checked_id',
         'created_at',
         'updated_at'
     ];

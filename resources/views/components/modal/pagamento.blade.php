@@ -31,6 +31,29 @@
                         ])
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @include('components.select', [
+                            'display' => 'Escolha o mês',
+                            'label' => 'Mês:',
+                            'icon' => 'fas fa-calendar',
+                            'name' => 'mes',
+                            'require' => true,
+                            'list' => $mesEnum,
+                            ])
+                    </div>
+                    <div class="col-md-6">
+                        @include('components.input', [
+                            'label' => 'Digita o ano:',
+                            'icon' => 'fas fa-calendar-times',
+                            'type' => 'number',
+                            'name' => 'ano',
+                            'placeholder' => 'Digita o ano',
+                            'require' => true,
+                            'value' => date("Y"),
+                        ])
+                    </div>
+                </div>
                 <div class="row mt-1">
                     <div class="col-md-12">
                         @include('components.input', [

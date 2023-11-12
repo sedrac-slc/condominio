@@ -61,7 +61,8 @@ class UserController extends Controller
                 $alertMessage = AlertMessage::DANGER();
                 toastr()->error($alertMessage->message,$alertMessage->type);
             }
-        }catch(Exception){
+        }catch(Exception $e){
+            dd($e);
             toastr()->error($alertMessage->message,$alertMessage->type);
         }finally{
             return redirect()->route('user.home');

@@ -27,6 +27,8 @@ class PagamentoRequest extends FormRequest
             'valor' => ['required'],
             'nome' => ['required'],
             'descricao' => ['required'],
+            'mes' => ['required'],
+            'ano' => ['required'],
         ];
     }
 

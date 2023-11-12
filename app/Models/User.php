@@ -58,11 +58,11 @@ class User extends Authenticatable
     }
 
     public function  user_membro(){
-        return $this->hasOne(UserMembro::class);
+        return $this->hasOne(UserMembro::class,'user_id','id');
     }
 
     public function  user_morador(){
-        return $this->hasOne(UserMorador::class);
+        return $this->hasOne(UserMorador::class,'user_id','id');
     }
 
     public function registerUserCreate(User $user){
@@ -97,12 +97,12 @@ class User extends Authenticatable
     }
 
     public function isMembro(): bool{
-        return isset(Auth::user()->user_membro->id);
+        return isset($this->user_membro->id);
     }
 
     public function isMorador(): bool{
-        $morador = UserMorador::where('user_id',$this->id)->first();
-        return isset($morador->id);
+        $morador = UserMorador::where('user_id',Auth::user()->id)->first();
+        return isset($this->user_morador->id);
     }
 
     public function isMoradorResidente(): bool{
@@ -127,6 +127,5 @@ class User extends Authenticatable
 
         return $join;
     }
-
 
 }

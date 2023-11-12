@@ -7,11 +7,13 @@
             <span class="pl-2 text-dark">{{ $userMembro->user()->name }}</span>
         </a>
     </div>
+    @isset(Auth::user()->user_membro->id)
     <button class="text-primary bg-none" id="btn-add-reclamacao" data-bs-toggle="modal" data-bs-target="#modalReclamacao"
         url="{{ route('reclamacao.create',$userMembro->id) }}" method="POST">
         <i class="fas fa-user-plus"></i>
         <span>adicionar</span>
     </button>
+    @endisset
 @endsection
 @section('thead')
     <th>

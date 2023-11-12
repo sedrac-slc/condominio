@@ -5,15 +5,11 @@
 @endsection
 @section('painel')
     <section class="shadow p-2  mt-4 bg-white">
-        <div class="position-relative">
+        <div class="position-relative pb-3">
             <div class="m-2">
                 @yield('buttons')
             </div>
             <div class="float">
-                {{-- <button class="bg-none border rounded" id="btn-view-hide">
-                    <i class="fas fa-eye"></i>
-                    <span>mostra</span>
-                </button> --}}
                 <button class="bg-none border rounded" id="btn-search" data-bs-toggle="modal" data-bs-target="#modalSearch">
                     <i class="fas fa-search"></i>
                     <span>pesquisar</span>
@@ -24,7 +20,7 @@
         @include('components.errors')
         @yield('page-container')
         @yield('form-open')
-        <div class="table-responsive">
+        <div class="table-responsive mt-4">
             <table class="table table-hover table-borderless text-center">
                 <thead>
                     <tr>

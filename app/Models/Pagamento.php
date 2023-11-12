@@ -14,6 +14,8 @@ class Pagamento extends Model
         'id',
         'nome',
         'valor',
+        'mes',
+        'ano',
         'descricao',
         'how_created',
         'how_updated',

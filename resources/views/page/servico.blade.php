@@ -1,12 +1,14 @@
 @extends('layouts.page', ['list' => $servicos])
-@section('buttons')
-    <button class="text-primary bg-none" id="btn-add-servico" data-bs-toggle="modal" data-bs-target="#modalServico"
-        url="{{ route('servico.create') }}" method="POST">
-        <i class="fas fa-user-plus"></i>
-        <span>adicionar</span>
-    </button>
-@endsection
 @php $is_membro = isset(Auth::user()->user_membro->id); @endphp
+@section('buttons')
+    @if ($is_membro)
+        <button class="text-primary bg-none" id="btn-add-servico" data-bs-toggle="modal" data-bs-target="#modalServico"
+            url="{{ route('servico.create') }}" method="POST">
+            <i class="fas fa-user-plus"></i>
+            <span>adicionar</span>
+        </button>
+    @endif
+@endsection
 @section('thead')
     <th>
         <div><i class="fas fa-signature"></i><span>Nome</span></div>

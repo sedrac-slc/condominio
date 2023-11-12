@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PagamentoRequest;
 use App\Models\Pagamento;
 use App\Utils\AlertMessage;
+use App\Utils\Enum\MesEnum;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,8 +14,9 @@ class PagamentoController extends Controller
 {
     public function index(){
         $panel = "pagamento";
-        $pagamentos = Pagamento::orderBy('id','DESC')->paginate();
-        return view('page.pagamento',compact('pagamentos','panel'));
+        $mesEnum = MesEnum::keys();
+        $pagamentos = Pagamento::with('pagamento_users')->orderBy('id','DESC')->paginate();
+        return view('page.pagamento',compact('pagamentos','panel','mesEnum'));
     }
 
     public function store(PagamentoRequest $request){
@@ -31,10 +33,14 @@ class PagamentoController extends Controller
         }
     }
 
-    public function update(pagamentoRequest $request,$id){
+    public function update(PagamentoRequest $request,$id){
         try{
             $pagamento = Pagamento::find($id);
-            $pagamento->update($request->all());
+            $pagamento->update([
+                'valor' => $request->valor,
+                'nome' => $request->nome,
+                'descricao' => $request->descricao,
+            ]);
             $pagamento->registerUserUpdate(Auth::user()->id);
             $alertMessage = AlertMessage::WARNING();
         }catch(Exception){
@@ -62,10 +68,11 @@ class PagamentoController extends Controller
         $panel = "pagamento";
         $field = strtolower($request->field);
         $search =htmlspecialchars($request->search);
+        $mesEnum = MesEnum::keys();
         $pagamentos = Pagamento::where($field,'like','%'.$search.'%')
                      ->orderBy('id','DESC')
                      ->paginate();
-        return view('page.pagamento',compact('pagamentos','panel'));
+        return view('page.pagamento',compact('pagamentos','panel','mesEnum'));
     }
 
 }
